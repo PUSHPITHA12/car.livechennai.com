@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Compare Cars - car.livechennai.com</title>
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: { colors: { primary: '#cc0000', secondary: '#1e293b' } }
+            }
+        }
+    </script>
+    <style>
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #cc0000;
+            border-radius: 4px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: #990000;
+        }
+
+        .compare-table td,
+        .compare-table th {
+            padding: 1rem;
+            border-bottom: 1px solid #f3f4f6;
+            text-align: center;
+        }
+
+        .compare-table th {
+            text-align: right;
+            color: #6b7280;
+            font-weight: 600;
+            background-color: #f9fafb;
+            width: 20%;
+            border-right: 1px solid #f3f4f6;
+            position: sticky;
+            left: 0;
+            z-index: 10;
+        }
+
+        .compare-table tr:first-child th {
+            top: 0;
+            z-index: 20;
+        }
+
+        .compare-table tr:first-child td {
+            position: sticky;
+            top: 0;
+            z-index: 10;
+            background-color: white;
+            box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+        }
+
+        /* Toggle switch styling */
+        .dot { transition: transform 0.3s ease; }
+        input:checked ~ .dot { transform: translateX(100%); background-color: white; }
+        input:checked ~ .toggle-bg { background-color: #cc0000; }
+        
+        /* Highlight differences styling */
+        .diff-row td { background-color: #fef2f2 !important; color: #991b1b !important; font-weight: 600; transition: all 0.3s ease; }
+        .diff-row th { background-color: #fef2f2 !important; color: #991b1b !important; border-right-color: #fca5a5 !important; transition: all 0.3s ease; }
+        
+        .compare-table tr:hover td { background-color: #f9fafb; }
+    </style>
+</head>
+
+<body class="bg-gray-50 text-gray-900 font-sans flex flex-col min-h-screen">
+
+    <nav class="bg-white shadow-md border-b-4 border-primary sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-20 items-center">
+                <div class="flex-shrink-0 flex items-center gap-2">
+                    <div class="bg-primary p-2 rounded-md"><i data-lucide="car" class="text-white h-6 w-6"></i></div>
+                    <a href="index.html"
+                        class="text-2xl font-extrabold text-primary tracking-tight">car.livechennai.com</a>
+                </div>
+                <div class="hidden md:flex space-x-8 items-center">
+                    <a href="index.html" class="text-gray-700 hover:text-primary font-semibold transition">Home</a>
+                    <a href="brands.html" class="text-gray-700 hover:text-primary font-semibold transition">Brands</a>
+                    <a href="cars.html" class="text-gray-700 hover:text-primary font-semibold transition">All Cars</a>
+                    <a href="compare.html"
+                        class="text-primary font-bold transition border-b-2 border-primary pb-1">Compare</a>
+                    <a href="about.html" class="text-gray-700 hover:text-primary font-semibold transition">About</a>
+                    <a href="contact.html"
+                        class="bg-primary text-white px-5 py-2 rounded-md font-bold hover:bg-red-800 transition shadow-sm">Contact
+                        Us</a>
+                </div>
+                <div class="md:hidden flex items-center">
+                    <button id="mobile-menu-btn" class="text-gray-700 hover:text-primary focus:outline-none"><i
+                            data-lucide="menu" class="h-8 w-8"></i></button>
+                </div>
+            </div>
+        </div>
+        <div id="mobile-menu" class="hidden md:hidden bg-white border-t border-gray-200 shadow-lg absolute w-full z-40">
+            <div class="px-4 pt-2 pb-6 space-y-2 flex flex-col">
+                <a href="index.html"
+                    class="block px-3 py-3 rounded-md text-base font-medium text-gray-700 hover:text-primary hover:bg-gray-50">Home</a>
+                <a href="brands.html"
+                    class="block px-3 py-3 rounded-md text-base font-medium text-gray-700 hover:text-primary hover:bg-gray-50">Brands</a>
+                <a href="cars.html"
+                    class="block px-3 py-3 rounded-md text-base font-medium text-gray-700 hover:text-primary hover:bg-gray-50">All
+                    Cars</a>
+                <a href="compare.html"
+                    class="block px-3 py-3 rounded-md text-base font-bold text-primary hover:bg-gray-50">Compare</a>
+                <a href="about.html"
+                    class="block px-3 py-3 rounded-md text-base font-medium text-gray-700 hover:text-primary hover:bg-gray-50">About</a>
+                <a href="contact.html"
+                    class="block px-3 py-3 rounded-md text-base font-bold text-primary hover:bg-gray-50">Contact Us</a>
+            </div>
+        </div>
+    </nav>
+
+    <main class="flex-grow py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
+            <div class="text-center mb-12">
+                <h1 class="text-4xl font-extrabold text-gray-900 tracking-tight mb-4">Compare Cars</h1>
+                <p class="text-lg text-gray-500 max-w-2xl mx-auto mb-6">Compare up to 3 vehicles side-by-side to make the
+                    best decision.</p>
+                
+                <!-- Highlight Toggle -->
+                <div id="compare-actions" class="hidden flex justify-center items-center gap-4">
+                    <label class="flex items-center cursor-pointer bg-white px-4 py-2 rounded-full border border-gray-200 shadow-sm hover:shadow transition">
+                        <div class="relative">
+                            <input type="checkbox" id="highlight-toggle" class="sr-only" onchange="toggleHighlight()">
+                            <div class="block bg-gray-200 w-10 h-6 rounded-full transition toggle-bg"></div>
+                            <div class="dot absolute left-1 top-1 bg-white w-4 h-4 rounded-full transition transform shadow-sm"></div>
+                        </div>
+                        <div class="ml-3 text-gray-900 font-bold text-sm select-none flex items-center gap-2"><i data-lucide="sparkles" class="w-4 h-4 text-amber-500"></i> Highlight Differences</div>
+                    </label>
+                </div>
+            </div>
+
+            <div id="compare-container"
+                class="bg-white rounded-2xl shadow-sm border border-gray-200 overflow-hidden hidden">
+                <div class="overflow-x-auto">
+                    <table class="w-full compare-table" id="compare-table">
+                        <!-- Table injected by JS -->
+                    </table>
+                </div>
+            </div>
+
+            <div id="empty-state" class="text-center py-20 bg-white rounded-xl shadow-sm border border-gray-100 hidden">
+                <i data-lucide="git-compare" class="mx-auto h-20 w-20 text-gray-300 mb-6"></i>
+                <h2 class="text-2xl font-bold text-gray-900 mb-2">Your Comparison List is Empty</h2>
+                <p class="text-gray-500 mb-8 max-w-md mx-auto">Select up to 3 cars from the Browse Cars page to compare
+                    their specifications, prices, and features side-by-side.</p>
+                <a href="cars.html"
+                    class="bg-primary text-white px-8 py-3 rounded-md font-bold hover:bg-red-800 transition shadow-md inline-flex items-center gap-2">
+                    <i data-lucide="search"></i> Browse Cars to Compare
+                </a>
+            </div>
+
+        </div>
+    </main>
+
+    <footer class="bg-primary text-white pt-16 pb-8 border-t border-red-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
+                <div class="flex flex-col">
+                    <div class="flex items-center gap-3 mb-6">
+                        <div class="bg-white p-2 rounded-lg inline-flex items-center justify-center shadow-sm">
+                            <i data-lucide="car" class="text-primary h-6 w-6"></i>
+                        </div>
+                        <span class="text-2xl font-bold tracking-tight">car.livechennai.com</span>
+                    </div>
+                    <p class="text-red-100 leading-relaxed text-sm">Your premier directory-style platform to explore car
+                        brands, models, and specifications.</p>
+                </div>
+                <div>
+                    <h3 class="text-lg font-semibold mb-6 uppercase tracking-wider">Quick Links</h3>
+                    <ul class="space-y-4">
+                        <li><a href="brands.html"
+                                class="text-red-100 hover:text-white transition-colors flex items-center group"><i
+                                    data-lucide="chevron-right"
+                                    class="h-4 w-4 mr-2 group-hover:translate-x-1 transition-transform"></i>Browse
+                                Brands</a></li>
+                        <li><a href="cars.html"
+                                class="text-red-100 hover:text-white transition-colors flex items-center group"><i
+                                    data-lucide="chevron-right"
+                                    class="h-4 w-4 mr-2 group-hover:translate-x-1 transition-transform"></i>All Cars</a>
+                        </li>
+                        <li><a href="compare.html"
+                                class="text-red-100 hover:text-white transition-colors flex items-center group"><i
+                                    data-lucide="chevron-right"
+                                    class="h-4 w-4 mr-2 group-hover:translate-x-1 transition-transform"></i>Compare
+                                Cars</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-lg font-semibold mb-6 uppercase tracking-wider">Information</h3>
+                    <ul class="space-y-4">
+                        <li><a href="about.html"
+                                class="text-red-100 hover:text-white transition-colors flex items-center group"><i
+                                    data-lucide="chevron-right"
+                                    class="h-4 w-4 mr-2 group-hover:translate-x-1 transition-transform"></i>About
+                                Platform</a></li>
+                        <li><a href="contact.html"
+                                class="text-red-100 hover:text-white transition-colors flex items-center group"><i
+                                    data-lucide="chevron-right"
+                                    class="h-4 w-4 mr-2 group-hover:translate-x-1 transition-transform"></i>Contact
+                                Us</a></li>
+                    </ul>
+                </div>
+
+            </div>
+            <div class="border-t border-red-500/50 mb-8"></div>
+            <div class="flex flex-col md:flex-row justify-between items-center text-red-200 text-sm gap-4">
+                <p>&copy; 2026 car.livechennai.com - All rights reserved.</p>
+                <p>Designed, developed and maintained by JB Soft System</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/carsData.js"></script>
+    <script>
+        lucide.createIcons();
+        const btn = document.getElementById('mobile-menu-btn');
+        const menu = document.getElementById('mobile-menu');
+        if (btn && menu) {
+            btn.addEventListener('click', () => {
+                menu.classList.toggle('hidden');
+            });
+        }
+
+        function removeCompare(id) {
+            let list = JSON.parse(localStorage.getItem('compareList') || '[]');
+            list = list.filter(i => i !== id);
+            localStorage.setItem('compareList', JSON.stringify(list));
+            renderCompare();
+        }
+
+        function renderCompare() {
+            const compareList = JSON.parse(localStorage.getItem('compareList') || '[]');
+
+            if (compareList.length === 0) {
+                document.getElementById('compare-container').classList.add('hidden');
+                document.getElementById('compare-actions').classList.add('hidden');
+                document.getElementById('empty-state').classList.remove('hidden');
+                return;
+            }
+
+            document.getElementById('empty-state').classList.add('hidden');
+            document.getElementById('compare-container').classList.remove('hidden');
+            
+            if (compareList.length > 1) {
+                document.getElementById('compare-actions').classList.remove('hidden');
+            } else {
+                document.getElementById('compare-actions').classList.add('hidden');
+            }
+
+            // Fetch car objects
+            const cars = compareList.map(id => carsData.find(c => c.id === id)).filter(Boolean);
+
+            const table = document.getElementById('compare-table');
+
+            // Build rows
+            let html = `
+            <tr>
+                <th>Vehicle</th>
+                ${cars.map(c => `
+                    <td class="bg-white">
+                        <div class="relative mb-4">
+                            <button onclick="removeCompare(${c.id})" class="absolute -top-2 -right-2 bg-red-100 text-primary rounded-full p-1 hover:bg-primary hover:text-white transition z-10" title="Remove">
+                                <i data-lucide="x" class="w-4 h-4"></i>
+                            </button>
+                            <img src="${c.images[0]}" class="w-full h-32 object-cover rounded-lg shadow-sm" onerror="this.onerror=null; this.src='assets/images/car-placeholder.jpg';">
+                        </div>
+                        <h3 class="font-extrabold text-lg text-gray-900">${c.brand} ${c.model}</h3>
+                        <p class="text-sm text-gray-500">${c.year}</p>
+                    </td>
+                `).join('')}
+            </tr>
+            <tr class="compare-data-row">
+                <th>Price</th>
+                ${cars.map(c => `<td class="font-bold text-xl text-primary">${c.formatted_price}</td>`).join('')}
+            </tr>
+            <tr class="compare-data-row">
+                <th>EMI</th>
+                ${cars.map(c => `<td>${c.emi ? 'Starts at ' + c.emi + '/mo' : 'N/A'}</td>`).join('')}
+            </tr>
+            <tr class="compare-data-row">
+                <th>Variant</th>
+                ${cars.map(c => `<td>${c.variant}</td>`).join('')}
+            </tr>
+            <tr class="compare-data-row">
+                <th>Mileage</th>
+                ${cars.map(c => `<td>${c.mileage}</td>`).join('')}
+            </tr>
+            <tr class="compare-data-row">
+                <th>Fuel Type</th>
+                ${cars.map(c => `<td>${c.fuel_type}</td>`).join('')}
+            </tr>
+            <tr class="compare-data-row">
+                <th>Transmission</th>
+                ${cars.map(c => `<td>${c.transmission}</td>`).join('')}
+            </tr>
+            <tr class="compare-data-row">
+                <th>Body Type</th>
+                ${cars.map(c => `<td>${c.body_type}</td>`).join('')}
+            </tr>
+            <tr class="compare-data-row">
+                <th>Engine</th>
+                ${cars.map(c => `<td>${c.engine}</td>`).join('')}
+            </tr>
+            <tr class="compare-data-row">
+                <th>Seating Capacity</th>
+                ${cars.map(c => `<td>${c.seating_capacity}</td>`).join('')}
+            </tr>
+            <tr>
+                <th></th>
+                ${cars.map(c => `
+                    <td>
+                        <a href="details.html?id=${c.id}" class="inline-block bg-gray-100 hover:bg-gray-200 text-gray-800 font-semibold py-2 px-6 rounded transition">View Details</a>
+                    </td>
+                `).join('')}
+            </tr>
+        `;
+
+            table.innerHTML = html;
+            lucide.createIcons();
+            toggleHighlight(); // Re-apply highlight if toggle is checked
+        }
+
+        function toggleHighlight() {
+            const toggle = document.getElementById('highlight-toggle');
+            const rows = document.querySelectorAll('.compare-data-row');
+            
+            rows.forEach(row => {
+                if (toggle && toggle.checked) {
+                    const cells = row.querySelectorAll('td');
+                    let allSame = true;
+                    if (cells.length > 1) {
+                        const firstVal = cells[0].textContent.trim();
+                        for (let i = 1; i < cells.length; i++) {
+                            if (cells[i].textContent.trim() !== firstVal) {
+                                allSame = false;
+                                break;
+                            }
+                        }
+                    }
+                    if (!allSame && cells.length > 1) {
+                        row.classList.add('diff-row');
+                    } else {
+                        row.classList.remove('diff-row');
+                    }
+                } else {
+                    row.classList.remove('diff-row');
+                }
+            });
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            renderCompare();
+        });
+    </script>
+
+</body>
+
+</html>

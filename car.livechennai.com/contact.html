@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us - car.livechennai.com</title>
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: { colors: { primary: '#cc0000', secondary: '#1e293b' } }
+            }
+        }
+    </script>
+    <style>
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #f1f1f1; }
+        ::-webkit-scrollbar-thumb { background: #cc0000; border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: #990000; }
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-900 font-sans flex flex-col min-h-screen">
+
+<nav class="bg-white shadow-md border-b-4 border-primary sticky top-0 z-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex justify-between h-20 items-center">
+            <div class="flex-shrink-0 flex items-center gap-2">
+                <div class="bg-primary p-2 rounded-md"><i data-lucide="car" class="text-white h-6 w-6"></i></div>
+                <a href="index.html" class="text-2xl font-extrabold text-primary tracking-tight">car.livechennai.com</a>
+            </div>
+            <div class="hidden md:flex space-x-8 items-center">
+                <a href="index.html" class="text-gray-700 hover:text-primary font-semibold transition">Home</a>
+                <a href="brands.html" class="text-gray-700 hover:text-primary font-semibold transition">Brands</a>
+                <a href="cars.html" class="text-gray-700 hover:text-primary font-semibold transition">All Cars</a>
+                <a href="compare.html" class="text-gray-700 hover:text-primary font-semibold transition">Compare</a>
+                <a href="about.html" class="text-gray-700 hover:text-primary font-semibold transition">About</a>
+                <a href="contact.html" class="text-primary font-bold transition border-b-2 border-primary pb-1">Contact Us</a>
+            </div>
+            <div class="md:hidden flex items-center">
+                <button id="mobile-menu-btn" class="text-gray-700 hover:text-primary focus:outline-none"><i data-lucide="menu" class="h-8 w-8"></i></button>
+            </div>
+        </div>
+    </div>
+    <div id="mobile-menu" class="hidden md:hidden bg-white border-t border-gray-200 shadow-lg absolute w-full z-40">
+        <div class="px-4 pt-2 pb-6 space-y-2 flex flex-col">
+            <a href="index.html" class="block px-3 py-3 rounded-md text-base font-medium text-gray-700 hover:text-primary hover:bg-gray-50">Home</a>
+            <a href="brands.html" class="block px-3 py-3 rounded-md text-base font-medium text-gray-700 hover:text-primary hover:bg-gray-50">Brands</a>
+            <a href="cars.html" class="block px-3 py-3 rounded-md text-base font-medium text-gray-700 hover:text-primary hover:bg-gray-50">All Cars</a>
+            <a href="compare.html" class="block px-3 py-3 rounded-md text-base font-medium text-gray-700 hover:text-primary hover:bg-gray-50">Compare</a>
+            <a href="about.html" class="block px-3 py-3 rounded-md text-base font-medium text-gray-700 hover:text-primary hover:bg-gray-50">About</a>
+            <a href="contact.html" class="block px-3 py-3 rounded-md text-base font-bold text-primary hover:bg-gray-50">Contact Us</a>
+        </div>
+    </div>
+</nav>
+
+<main class="flex-grow py-12">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        
+        <div class="text-center mb-12">
+            <h1 class="text-4xl font-extrabold text-gray-900 tracking-tight mb-4">Get in Touch</h1>
+            <p class="text-lg text-gray-500 max-w-2xl mx-auto">Have questions about a listing or want to advertise your dealership? Contact our team today.</p>
+        </div>
+
+        <div class="bg-white rounded-2xl shadow-xl overflow-hidden max-w-5xl mx-auto">
+            <div class="grid grid-cols-1 lg:grid-cols-2">
+                <!-- Contact Info -->
+                <div class="bg-primary p-10 lg:p-12 text-white">
+                    <h2 class="text-3xl font-bold mb-6">Contact Information</h2>
+                    <p class="text-red-100 mb-8 leading-relaxed">
+                        Fill out the form and our team will get back to you within 24 hours. We're here to help you navigate the Chennai used car market.
+                    </p>
+                    
+                    <div class="space-y-6">
+                        <div class="flex items-start">
+                            <i data-lucide="phone" class="h-6 w-6 mr-4 mt-1"></i>
+                            <div>
+                                <h3 class="font-semibold text-lg">Phone</h3>
+                                <p class="text-red-100">+91 98765 43210</p>
+                                <p class="text-red-100 text-sm">Mon-Fri 9am to 6pm</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start">
+                            <i data-lucide="mail" class="h-6 w-6 mr-4 mt-1"></i>
+                            <div>
+                                <h3 class="font-semibold text-lg">Email</h3>
+                                <p class="text-red-100">info@livechennai.com</p>
+                                <p class="text-red-100">support@livechennai.com</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start">
+                            <i data-lucide="map-pin" class="h-6 w-6 mr-4 mt-1"></i>
+                            <div>
+                                <h3 class="font-semibold text-lg">Office</h3>
+                                <p class="text-red-100">LiveChennai Headquarters<br>Anna Salai, Teynampet<br>Chennai - 600018</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Contact Form -->
+                <div class="p-10 lg:p-12">
+                    <form class="space-y-6">
+                        <div>
+                            <label for="name" class="block text-sm font-medium text-gray-700">Full Name</label>
+                            <input type="text" id="name" name="name" class="mt-1 block w-full px-4 py-3 border border-gray-300 rounded-md shadow-sm focus:ring-primary focus:border-primary sm:text-sm bg-gray-50" placeholder="John Doe">
+                        </div>
+                        <div>
+                            <label for="email" class="block text-sm font-medium text-gray-700">Email Address</label>
+                            <input type="email" id="email" name="email" class="mt-1 block w-full px-4 py-3 border border-gray-300 rounded-md shadow-sm focus:ring-primary focus:border-primary sm:text-sm bg-gray-50" placeholder="john@example.com">
+                        </div>
+                        <div>
+                            <label for="subject" class="block text-sm font-medium text-gray-700">Subject</label>
+                            <select id="subject" name="subject" class="mt-1 block w-full px-4 py-3 border border-gray-300 rounded-md shadow-sm focus:ring-primary focus:border-primary sm:text-sm bg-gray-50">
+                                <option>General Inquiry</option>
+                                <option>Listing Issue</option>
+                                <option>Dealer Advertisement</option>
+                                <option>Feedback</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label for="message" class="block text-sm font-medium text-gray-700">Message</label>
+                            <textarea id="message" name="message" rows="4" class="mt-1 block w-full px-4 py-3 border border-gray-300 rounded-md shadow-sm focus:ring-primary focus:border-primary sm:text-sm bg-gray-50" placeholder="How can we help you?"></textarea>
+                        </div>
+                        <div>
+                            <button type="button" onclick="alert('Message sent successfully!')" class="w-full flex justify-center py-3 px-4 border border-transparent rounded-md shadow-sm text-sm font-bold text-white bg-primary hover:bg-red-800 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary transition">
+                                Send Message
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</main>
+
+<footer class="bg-primary text-white pt-16 pb-8 border-t border-red-800 mt-12">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
+            <div class="flex flex-col">
+                <div class="flex items-center gap-3 mb-6">
+                    <div class="bg-white p-2 rounded-lg inline-flex items-center justify-center shadow-sm">
+                        <i data-lucide="car" class="text-primary h-6 w-6"></i>
+                    </div>
+                    <span class="text-2xl font-bold tracking-tight">car.livechennai.com</span>
+                </div>
+                <p class="text-red-100 leading-relaxed text-sm">Your premier directory-style platform to explore car brands, models, and specifications.</p>
+            </div>
+            <div>
+                <h3 class="text-lg font-semibold mb-6 uppercase tracking-wider">Quick Links</h3>
+                <ul class="space-y-4">
+                    <li><a href="brands.html" class="text-red-100 hover:text-white transition-colors flex items-center group"><i data-lucide="chevron-right" class="h-4 w-4 mr-2 group-hover:translate-x-1 transition-transform"></i>Browse Brands</a></li>
+                    <li><a href="cars.html" class="text-red-100 hover:text-white transition-colors flex items-center group"><i data-lucide="chevron-right" class="h-4 w-4 mr-2 group-hover:translate-x-1 transition-transform"></i>All Cars</a></li>
+                    <li><a href="compare.html" class="text-red-100 hover:text-white transition-colors flex items-center group"><i data-lucide="chevron-right" class="h-4 w-4 mr-2 group-hover:translate-x-1 transition-transform"></i>Compare Cars</a></li>
+                </ul>
+            </div>
+            <div>
+                <h3 class="text-lg font-semibold mb-6 uppercase tracking-wider">Information</h3>
+                <ul class="space-y-4">
+                    <li><a href="about.html" class="text-red-100 hover:text-white transition-colors flex items-center group"><i data-lucide="chevron-right" class="h-4 w-4 mr-2 group-hover:translate-x-1 transition-transform"></i>About Platform</a></li>
+                    <li><a href="contact.html" class="text-red-100 hover:text-white transition-colors flex items-center group"><i data-lucide="chevron-right" class="h-4 w-4 mr-2 group-hover:translate-x-1 transition-transform"></i>Contact Us</a></li>
+                </ul>
+            </div>
+            
+        </div>
+        <div class="border-t border-red-500/50 mb-8"></div>
+        <div class="flex flex-col md:flex-row justify-between items-center text-red-200 text-sm gap-4">
+            <p>&copy; 2026 car.livechennai.com - All rights reserved.</p>
+            <p>Designed, developed and maintained by JB Soft System</p>
+        </div>
+    </div>
+</footer>
+
+<script>
+    lucide.createIcons();
+    const btn = document.getElementById('mobile-menu-btn');
+    const menu = document.getElementById('mobile-menu');
+    if(btn && menu) {
+        btn.addEventListener('click', () => {
+            menu.classList.toggle('hidden');
+        });
+    }
+</script>
+
+</body>
+</html>

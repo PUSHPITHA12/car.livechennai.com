@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#cc0000',
+                        secondary: '#1e293b',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #f1f1f1; }
+        ::-webkit-scrollbar-thumb { background: #cc0000; border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: #990000; }
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-900 font-sans flex flex-col min-h-screen">
+
+<!-- Premium Navbar -->
+<nav class="bg-white shadow-md border-b-4 border-primary sticky top-0 z-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex justify-between h-20 items-center">
+            <!-- Logo -->
+            <div class="flex-shrink-0 flex items-center gap-2">
+                <div class="bg-primary p-2 rounded-md">
+                    <i data-lucide="car" class="text-white h-6 w-6"></i>
+                </div>
+                <a href="index.html" class="text-2xl font-extrabold text-primary tracking-tight">
+                    car.livechennai.com
+                </a>
+            </div>
+            
+            <!-- Desktop Menu -->
+            <div class="hidden md:flex space-x-8 items-center">
+                <a href="index.html" class="text-gray-700 hover:text-primary font-semibold transition">Home</a>
+                <a href="brands.html" class="text-primary font-bold transition border-b-2 border-primary pb-1">Brands</a>
+                <a href="cars.html" class="text-gray-700 hover:text-primary font-semibold transition">All Cars</a>
+                <a href="compare.html" class="text-gray-700 hover:text-primary font-semibold transition">Compare</a>
+                <a href="about.html" class="text-gray-700 hover:text-primary font-semibold transition">About</a>
+                <a href="contact.html" class="bg-primary text-white px-5 py-2 rounded-md font-bold hover:bg-red-800 transition shadow-sm">
+                    Contact Us
+                </a>
+            </div>
+
+            <!-- Mobile Menu Button -->
+            <div class="md:hidden flex items-center">
+                <button id="mobile-menu-btn" class="text-gray-700 hover:text-primary focus:outline-none">
+                    <i data-lucide="menu" class="h-8 w-8"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Mobile Menu -->
+    <div id="mobile-menu" class="hidden md:hidden bg-white border-t border-gray-200 shadow-lg absolute w-full z-40">
+        <div class="px-4 pt-2 pb-6 space-y-2 flex flex-col">
+            <a href="index.html" class="block px-3 py-3 rounded-md text-base font-medium text-gray-700 hover:text-primary hover:bg-gray-50">Home</a>
+            <a href="brands.html" class="block px-3 py-3 rounded-md text-base font-bold text-primary hover:bg-gray-50">Brands</a>
+            <a href="cars.html" class="block px-3 py-3 rounded-md text-base font-medium text-gray-700 hover:text-primary hover:bg-gray-50">All Cars</a>
+            <a href="compare.html" class="block px-3 py-3 rounded-md text-base font-medium text-gray-700 hover:text-primary hover:bg-gray-50">Compare</a>
+            <a href="about.html" class="block px-3 py-3 rounded-md text-base font-medium text-gray-700 hover:text-primary hover:bg-gray-50">About</a>
+            <a href="contact.html" class="block px-3 py-3 rounded-md text-base font-bold text-primary hover:bg-gray-50">Contact Us</a>
+        </div>
+    </div>
+</nav>
+
+<main class="flex-grow py-12">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-12">
+            <h1 class="text-4xl font-extrabold text-gray-900 tracking-tight mb-4">Choose Your Brand</h1>
+            <p class="text-lg text-gray-500 max-w-2xl mx-auto">Select a manufacturer below to see all available models and their detailed specifications.</p>
+        </div>
+        
+        <div id="all-brands-container" class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-6">
+            <!-- Javascript will inject brands here -->
+        </div>
+    </div>
+</main>
+
+<footer class="bg-primary text-white pt-16 pb-8 border-t border-red-800">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
+            <div class="flex flex-col">
+                <div class="flex items-center gap-3 mb-6">
+                    <div class="bg-white p-2 rounded-lg inline-flex items-center justify-center shadow-sm">
+                        <i data-lucide="car" class="text-primary h-6 w-6"></i>
+                    </div>
+                    <span class="text-2xl font-bold tracking-tight">car.livechennai.com</span>
+                </div>
+                <p class="text-red-100 leading-relaxed text-sm">Your premier directory-style platform to explore car brands, models, and specifications.</p>
+            </div>
+            <div>
+                <h3 class="text-lg font-semibold mb-6 uppercase tracking-wider">Quick Links</h3>
+                <ul class="space-y-4">
+                    <li><a href="brands.html" class="text-red-100 hover:text-white transition-colors flex items-center group"><i data-lucide="chevron-right" class="h-4 w-4 mr-2 group-hover:translate-x-1 transition-transform"></i>Browse Brands</a></li>
+                    <li><a href="cars.html" class="text-red-100 hover:text-white transition-colors flex items-center group"><i data-lucide="chevron-right" class="h-4 w-4 mr-2 group-hover:translate-x-1 transition-transform"></i>All Cars</a></li>
+                    <li><a href="compare.html" class="text-red-100 hover:text-white transition-colors flex items-center group"><i data-lucide="chevron-right" class="h-4 w-4 mr-2 group-hover:translate-x-1 transition-transform"></i>Compare Cars</a></li>
+                </ul>
+            </div>
+            <div>
+                <h3 class="text-lg font-semibold mb-6 uppercase tracking-wider">Information</h3>
+                <ul class="space-y-4">
+                    <li><a href="about.html" class="text-red-100 hover:text-white transition-colors flex items-center group"><i data-lucide="chevron-right" class="h-4 w-4 mr-2 group-hover:translate-x-1 transition-transform"></i>About Platform</a></li>
+                    <li><a href="contact.html" class="text-red-100 hover:text-white transition-colors flex items-center group"><i data-lucide="chevron-right" class="h-4 w-4 mr-2 group-hover:translate-x-1 transition-transform"></i>Contact Us</a></li>
+                </ul>
+            </div>
+            
+        </div>
+        <div class="border-t border-red-500/50 mb-8"></div>
+        <div class="flex flex-col md:flex-row justify-between items-center text-red-200 text-sm gap-4">
+            <p>&copy; 2026 car.livechennai.com - All rights reserved.</p>
+            <p>Designed, developed and maintained by JB Soft System</p>
+        </div>
+    </div>
+</footer>
+
+<script src="js/carsData.js"></script>
+<script>
+    lucide.createIcons();
+    const btn = document.getElementById('mobile-menu-btn');
+    const menu = document.getElementById('mobile-menu');
+    if(btn && menu) {
+        btn.addEventListener('click', () => {
+            menu.classList.toggle('hidden');
+        });
+    }
+
+    // Populate All Brands
+    document.addEventListener('DOMContentLoaded', () => {
+        const container = document.getElementById('all-brands-container');
+        if(container && typeof brandsData !== 'undefined') {
+            let html = '';
+            brandsData.forEach(brand => {
+                html += `
+                <a href="models.html?brand=${encodeURIComponent(brand.name)}" class="bg-white rounded-xl shadow-sm border border-gray-100 hover:shadow-lg hover:border-primary hover:-translate-y-1 transition-all duration-300 flex flex-col items-center justify-center p-8 group">
+                    <div class="w-20 h-20 rounded-full bg-gray-50 flex items-center justify-center mb-4 overflow-hidden ring-4 ring-gray-50 group-hover:ring-red-100 transition-all p-2">
+                        <img src="${brand.logo}" alt="${brand.name}" class="w-full h-full object-contain group-hover:scale-110 transition-transform" onerror="this.outerHTML='<div class=\\'w-full h-full flex items-center justify-center bg-red-50 text-red-600 font-bold p-2 text-center text-xs\\'>Missing file: ' + this.getAttribute('src').split('/').pop() + '</div>'">
+                    </div>
+                    <h3 class="font-bold text-gray-900 text-lg text-center group-hover:text-primary transition-colors">${brand.name}</h3>
+                </a>
+                `;
+            });
+            container.innerHTML = html;
+        }
+    });
+</script>
+
+</body>
+</html>
