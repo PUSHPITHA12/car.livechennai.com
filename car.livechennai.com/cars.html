@@ -202,9 +202,13 @@
                             <div class="flex items-center gap-1" title="Engine"><i data-lucide="zap" class="h-4 w-4 text-gray-400"></i> ${car.engine}</div>
                         </div>
                         
-                        <a href="details.html?id=${car.id}" class="mt-4 block w-full text-center bg-gray-50 hover:bg-primary hover:text-white text-primary font-semibold py-2 rounded border border-gray-200 transition-colors">
-                            View Details
-                        </a>
+                        <div class="mt-4 flex flex-col gap-2">
+                            <button onclick="window.toggleCompare(${car.id})" data-id="${car.id}" data-base-class="w-full font-bold py-2 rounded text-sm" data-add-text="Add to Compare" data-remove-text="Remove from Compare" class="compare-toggle-btn">
+                            </button>
+                            <a href="details.html?id=${car.id}" class="block w-full text-center bg-gray-50 hover:bg-gray-200 text-gray-800 font-semibold py-2 rounded border border-gray-200 transition-colors text-sm">
+                                View Details
+                            </a>
+                        </div>
                     </div>
                 </div>
                 `;
@@ -214,6 +218,7 @@
             document.getElementById('no-cars-msg').classList.remove('hidden');
         }
         lucide.createIcons();
+        window.updateAllCompareButtons();
     });
 </script>
 

@@ -157,7 +157,7 @@
 
             <div id="empty-state" class="text-center py-20 bg-white rounded-xl shadow-sm border border-gray-100 hidden">
                 <i data-lucide="git-compare" class="mx-auto h-20 w-20 text-gray-300 mb-6"></i>
-                <h2 class="text-2xl font-bold text-gray-900 mb-2">Your Comparison List is Empty</h2>
+                <h2 class="text-2xl font-bold text-gray-900 mb-2">No cars selected for comparison</h2>
                 <p class="text-gray-500 mb-8 max-w-md mx-auto">Select up to 3 cars from the Browse Cars page to compare
                     their specifications, prices, and features side-by-side.</p>
                 <a href="cars.html"
@@ -238,12 +238,9 @@
             });
         }
 
-        function removeCompare(id) {
-            let list = JSON.parse(localStorage.getItem('compareList') || '[]');
-            list = list.filter(i => i !== id);
-            localStorage.setItem('compareList', JSON.stringify(list));
+        window.addEventListener('compareUpdated', () => {
             renderCompare();
-        }
+        });
 
         function renderCompare() {
             const compareList = JSON.parse(localStorage.getItem('compareList') || '[]');
@@ -274,15 +271,14 @@
             <tr>
                 <th>Vehicle</th>
                 ${cars.map(c => `
-                    <td class="bg-white">
-                        <div class="relative mb-4">
-                            <button onclick="removeCompare(${c.id})" class="absolute -top-2 -right-2 bg-red-100 text-primary rounded-full p-1 hover:bg-primary hover:text-white transition z-10" title="Remove">
-                                <i data-lucide="x" class="w-4 h-4"></i>
-                            </button>
-                            <img src="${c.images[0]}" class="w-full h-32 object-cover rounded-lg shadow-sm" onerror="this.onerror=null; this.src='assets/images/car-placeholder.jpg';">
+                    <td class="bg-white p-4">
+                        <div class="mb-4">
+                            <img src="${c.images[0]}" class="w-full h-32 sm:h-40 object-cover rounded-lg shadow-sm" onerror="this.onerror=null; this.src='assets/images/car-placeholder.jpg';">
                         </div>
                         <h3 class="font-extrabold text-lg text-gray-900">${c.brand} ${c.model}</h3>
-                        <p class="text-sm text-gray-500">${c.year}</p>
+                        <p class="text-sm text-gray-500 mb-3">${c.year}</p>
+                        <button onclick="window.toggleCompare(${c.id})" data-id="${c.id}" data-base-class="w-full py-2 rounded-md font-bold" data-add-text="Add to Compare" data-remove-text="Remove from Compare" class="compare-toggle-btn">
+                        </button>
                     </td>
                 `).join('')}
             </tr>
@@ -325,8 +321,8 @@
             <tr>
                 <th></th>
                 ${cars.map(c => `
-                    <td>
-                        <a href="details.html?id=${c.id}" class="inline-block bg-gray-100 hover:bg-gray-200 text-gray-800 font-semibold py-2 px-6 rounded transition">View Details</a>
+                    <td class="p-4">
+                        <a href="details.html?id=${c.id}" class="block w-full text-center bg-gray-100 hover:bg-gray-200 text-gray-800 font-bold py-3 rounded-md transition shadow-sm">View Details</a>
                     </td>
                 `).join('')}
             </tr>
@@ -335,6 +331,7 @@
             table.innerHTML = html;
             lucide.createIcons();
             toggleHighlight(); // Re-apply highlight if toggle is checked
+            window.updateAllCompareButtons();
         }
 
         function toggleHighlight() {

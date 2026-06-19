@@ -1186,3 +1186,66 @@ const carsData = [
         ]
     }
 ];
+
+// ----- Global Compare Logic -----
+window.getCompareList = function() {
+    return JSON.parse(localStorage.getItem('compareList') || '[]');
+};
+
+window.toggleCompare = function(id) {
+    let list = window.getCompareList();
+    if (list.includes(id)) {
+        list = list.filter(i => i !== id);
+    } else {
+        if (list.length >= 3) {
+            alert("You can only compare up to 3 cars. Please remove one first.");
+            return;
+        }
+        list.push(id);
+    }
+    localStorage.setItem('compareList', JSON.stringify(list));
+    window.dispatchEvent(new Event('compareUpdated'));
+};
+
+window.updateAllCompareButtons = function() {
+    const list = window.getCompareList();
+    const btns = document.querySelectorAll('.compare-toggle-btn');
+    btns.forEach(btn => {
+        const id = parseInt(btn.getAttribute('data-id'));
+        let baseClasses = btn.getAttribute('data-base-class') || '';
+        
+        if (list.includes(id)) {
+            const text = btn.getAttribute('data-remove-text') || 'Remove from Compare';
+            if (btn.getAttribute('data-current-state') !== 'remove') {
+                btn.innerHTML = `<i data-lucide="trash-2" class="w-4 h-4"></i> ${text}`;
+                btn.className = `compare-toggle-btn bg-white text-primary border border-primary hover:bg-red-50 flex justify-center items-center gap-2 transition shadow-sm ${baseClasses}`;
+                btn.setAttribute('data-current-state', 'remove');
+            }
+        } else {
+            const text = btn.getAttribute('data-add-text') || 'Add to Compare';
+            if (btn.getAttribute('data-current-state') !== 'add') {
+                btn.innerHTML = `<i data-lucide="git-compare" class="w-4 h-4"></i> ${text}`;
+                btn.className = `compare-toggle-btn bg-primary text-white border border-transparent hover:bg-red-800 flex justify-center items-center gap-2 transition shadow-sm ${baseClasses}`;
+                btn.setAttribute('data-current-state', 'add');
+            }
+        }
+    });
+    
+    if (typeof lucide !== 'undefined') {
+        lucide.createIcons();
+    }
+};
+
+window.addEventListener('compareUpdated', () => {
+    window.updateAllCompareButtons();
+});
+
+window.addEventListener('storage', (e) => {
+    if(e.key === 'compareList') {
+        window.dispatchEvent(new Event('compareUpdated'));
+    }
+});
+
+document.addEventListener('DOMContentLoaded', () => {
+    window.updateAllCompareButtons();
+});

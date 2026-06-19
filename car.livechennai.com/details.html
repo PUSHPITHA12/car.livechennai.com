@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -16,119 +17,168 @@
         }
     </script>
     <style>
-        ::-webkit-scrollbar { width: 8px; }
-        ::-webkit-scrollbar-track { background: #f1f1f1; }
-        ::-webkit-scrollbar-thumb { background: #cc0000; border-radius: 4px; }
-        ::-webkit-scrollbar-thumb:hover { background: #990000; }
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #cc0000;
+            border-radius: 4px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: #990000;
+        }
     </style>
 </head>
+
 <body class="bg-gray-50 text-gray-900 font-sans flex flex-col min-h-screen">
 
-<nav class="bg-white shadow-md border-b-4 border-primary sticky top-0 z-50">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="flex justify-between h-20 items-center">
-            <div class="flex-shrink-0 flex items-center gap-2">
-                <div class="bg-primary p-2 rounded-md"><i data-lucide="car" class="text-white h-6 w-6"></i></div>
-                <a href="index.html" class="text-2xl font-extrabold text-primary tracking-tight">car.livechennai.com</a>
-            </div>
-            <div class="hidden md:flex space-x-8 items-center">
-                <a href="index.html" class="text-gray-700 hover:text-primary font-semibold transition">Home</a>
-                <a href="brands.html" class="text-gray-700 hover:text-primary font-semibold transition">Brands</a>
-                <a href="cars.html" class="text-gray-700 hover:text-primary font-semibold transition">All Cars</a>
-                <a href="compare.html" class="text-gray-700 hover:text-primary font-semibold transition">Compare</a>
-                <a href="about.html" class="text-gray-700 hover:text-primary font-semibold transition">About</a>
-                <a href="contact.html" class="bg-primary text-white px-5 py-2 rounded-md font-bold hover:bg-red-800 transition shadow-sm">Contact Us</a>
-            </div>
-            <div class="md:hidden flex items-center">
-                <button id="mobile-menu-btn" class="text-gray-700 hover:text-primary focus:outline-none"><i data-lucide="menu" class="h-8 w-8"></i></button>
-            </div>
-        </div>
-    </div>
-    <div id="mobile-menu" class="hidden md:hidden bg-white border-t border-gray-200 shadow-lg absolute w-full z-40">
-        <div class="px-4 pt-2 pb-6 space-y-2 flex flex-col">
-            <a href="index.html" class="block px-3 py-3 rounded-md text-base font-medium text-gray-700 hover:text-primary hover:bg-gray-50">Home</a>
-            <a href="brands.html" class="block px-3 py-3 rounded-md text-base font-medium text-gray-700 hover:text-primary hover:bg-gray-50">Brands</a>
-            <a href="cars.html" class="block px-3 py-3 rounded-md text-base font-medium text-gray-700 hover:text-primary hover:bg-gray-50">All Cars</a>
-            <a href="compare.html" class="block px-3 py-3 rounded-md text-base font-medium text-gray-700 hover:text-primary hover:bg-gray-50">Compare</a>
-            <a href="about.html" class="block px-3 py-3 rounded-md text-base font-medium text-gray-700 hover:text-primary hover:bg-gray-50">About</a>
-            <a href="contact.html" class="block px-3 py-3 rounded-md text-base font-bold text-primary hover:bg-gray-50">Contact Us</a>
-        </div>
-    </div>
-</nav>
-
-<main class="flex-grow py-12">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8" id="car-details-container">
-        <!-- Content injected by JS -->
-    </div>
-
-    <!-- Error State -->
-    <div id="error-state" class="hidden max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center py-20 bg-white rounded-xl shadow-sm border border-gray-100 mt-8">
-        <i data-lucide="alert-triangle" class="mx-auto h-16 w-16 text-primary mb-4"></i>
-        <h2 class="text-2xl font-bold text-gray-900 mb-2">Car Not Found</h2>
-        <p class="text-gray-500 mb-6">The vehicle you are looking for might have been sold or removed.</p>
-        <a href="cars.html" class="bg-primary text-white px-6 py-2 rounded-md font-bold hover:bg-red-800 transition">Browse All Cars</a>
-    </div>
-</main>
-
-<footer class="bg-primary text-white pt-16 pb-8 border-t border-red-800 mt-12">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
-            <div class="flex flex-col">
-                <div class="flex items-center gap-3 mb-6">
-                    <div class="bg-white p-2 rounded-lg inline-flex items-center justify-center shadow-sm">
-                        <i data-lucide="car" class="text-primary h-6 w-6"></i>
-                    </div>
-                    <span class="text-2xl font-bold tracking-tight">car.livechennai.com</span>
+    <nav class="bg-white shadow-md border-b-4 border-primary sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-20 items-center">
+                <div class="flex-shrink-0 flex items-center gap-2">
+                    <div class="bg-primary p-2 rounded-md"><i data-lucide="car" class="text-white h-6 w-6"></i></div>
+                    <a href="index.html"
+                        class="text-2xl font-extrabold text-primary tracking-tight">car.livechennai.com</a>
                 </div>
-                <p class="text-red-100 leading-relaxed text-sm">Your premier directory-style platform to explore car brands, models, and specifications.</p>
+                <div class="hidden md:flex space-x-8 items-center">
+                    <a href="index.html" class="text-gray-700 hover:text-primary font-semibold transition">Home</a>
+                    <a href="brands.html" class="text-gray-700 hover:text-primary font-semibold transition">Brands</a>
+                    <a href="cars.html" class="text-gray-700 hover:text-primary font-semibold transition">All Cars</a>
+                    <a href="compare.html" class="text-gray-700 hover:text-primary font-semibold transition">Compare</a>
+                    <a href="about.html" class="text-gray-700 hover:text-primary font-semibold transition">About</a>
+                    <a href="contact.html"
+                        class="bg-primary text-white px-5 py-2 rounded-md font-bold hover:bg-red-800 transition shadow-sm">Contact
+                        Us</a>
+                </div>
+                <div class="md:hidden flex items-center">
+                    <button id="mobile-menu-btn" class="text-gray-700 hover:text-primary focus:outline-none"><i
+                            data-lucide="menu" class="h-8 w-8"></i></button>
+                </div>
             </div>
-            <div>
-                <h3 class="text-lg font-semibold mb-6 uppercase tracking-wider">Quick Links</h3>
-                <ul class="space-y-4">
-                    <li><a href="brands.html" class="text-red-100 hover:text-white transition-colors flex items-center group"><i data-lucide="chevron-right" class="h-4 w-4 mr-2 group-hover:translate-x-1 transition-transform"></i>Browse Brands</a></li>
-                    <li><a href="cars.html" class="text-red-100 hover:text-white transition-colors flex items-center group"><i data-lucide="chevron-right" class="h-4 w-4 mr-2 group-hover:translate-x-1 transition-transform"></i>All Cars</a></li>
-                    <li><a href="compare.html" class="text-red-100 hover:text-white transition-colors flex items-center group"><i data-lucide="chevron-right" class="h-4 w-4 mr-2 group-hover:translate-x-1 transition-transform"></i>Compare Cars</a></li>
-                </ul>
-            </div>
-            <div>
-                <h3 class="text-lg font-semibold mb-6 uppercase tracking-wider">Information</h3>
-                <ul class="space-y-4">
-                    <li><a href="about.html" class="text-red-100 hover:text-white transition-colors flex items-center group"><i data-lucide="chevron-right" class="h-4 w-4 mr-2 group-hover:translate-x-1 transition-transform"></i>About Platform</a></li>
-                    <li><a href="contact.html" class="text-red-100 hover:text-white transition-colors flex items-center group"><i data-lucide="chevron-right" class="h-4 w-4 mr-2 group-hover:translate-x-1 transition-transform"></i>Contact Us</a></li>
-                </ul>
-            </div>
-            
         </div>
-        <div class="border-t border-red-500/50 mb-8"></div>
-        <div class="flex flex-col md:flex-row justify-between items-center text-red-200 text-sm gap-4">
-            <p>&copy; 2026 car.livechennai.com - All rights reserved.</p>
-            <p>Designed, developed and maintained by JB Soft System</p>
+        <div id="mobile-menu" class="hidden md:hidden bg-white border-t border-gray-200 shadow-lg absolute w-full z-40">
+            <div class="px-4 pt-2 pb-6 space-y-2 flex flex-col">
+                <a href="index.html"
+                    class="block px-3 py-3 rounded-md text-base font-medium text-gray-700 hover:text-primary hover:bg-gray-50">Home</a>
+                <a href="brands.html"
+                    class="block px-3 py-3 rounded-md text-base font-medium text-gray-700 hover:text-primary hover:bg-gray-50">Brands</a>
+                <a href="cars.html"
+                    class="block px-3 py-3 rounded-md text-base font-medium text-gray-700 hover:text-primary hover:bg-gray-50">All
+                    Cars</a>
+                <a href="compare.html"
+                    class="block px-3 py-3 rounded-md text-base font-medium text-gray-700 hover:text-primary hover:bg-gray-50">Compare</a>
+                <a href="about.html"
+                    class="block px-3 py-3 rounded-md text-base font-medium text-gray-700 hover:text-primary hover:bg-gray-50">About</a>
+                <a href="contact.html"
+                    class="block px-3 py-3 rounded-md text-base font-bold text-primary hover:bg-gray-50">Contact Us</a>
+            </div>
         </div>
-    </div>
-</footer>
+    </nav>
 
-<script src="js/carsData.js"></script>
-<script>
-    lucide.createIcons();
-    const btn = document.getElementById('mobile-menu-btn');
-    const menu = document.getElementById('mobile-menu');
-    if(btn && menu) {
-        btn.addEventListener('click', () => {
-            menu.classList.toggle('hidden');
-        });
-    }
+    <main class="flex-grow py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8" id="car-details-container">
+            <!-- Content injected by JS -->
+        </div>
 
-    document.addEventListener('DOMContentLoaded', () => {
-        const urlParams = new URLSearchParams(window.location.search);
-        const carId = parseInt(urlParams.get('id'));
-        
-        const car = carsData.find(c => c.id === carId);
-        
-        if(car) {
-            document.title = `${car.brand} ${car.model} (${car.year}) - car.livechennai.com`;
-            
-            const container = document.getElementById('car-details-container');
-            container.innerHTML = `
+        <!-- Error State -->
+        <div id="error-state"
+            class="hidden max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center py-20 bg-white rounded-xl shadow-sm border border-gray-100 mt-8">
+            <i data-lucide="alert-triangle" class="mx-auto h-16 w-16 text-primary mb-4"></i>
+            <h2 class="text-2xl font-bold text-gray-900 mb-2">Car Not Found</h2>
+            <p class="text-gray-500 mb-6">The vehicle you are looking for might have been sold or removed.</p>
+            <a href="cars.html"
+                class="bg-primary text-white px-6 py-2 rounded-md font-bold hover:bg-red-800 transition">Browse All
+                Cars</a>
+        </div>
+    </main>
+
+    <footer class="bg-primary text-white pt-16 pb-8 border-t border-red-800 mt-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
+                <div class="flex flex-col">
+                    <div class="flex items-center gap-3 mb-6">
+                        <div class="bg-white p-2 rounded-lg inline-flex items-center justify-center shadow-sm">
+                            <i data-lucide="car" class="text-primary h-6 w-6"></i>
+                        </div>
+                        <span class="text-2xl font-bold tracking-tight">car.livechennai.com</span>
+                    </div>
+                    <p class="text-red-100 leading-relaxed text-sm">Your premier directory-style platform to explore car
+                        brands, models, and specifications.</p>
+                </div>
+                <div>
+                    <h3 class="text-lg font-semibold mb-6 uppercase tracking-wider">Quick Links</h3>
+                    <ul class="space-y-4">
+                        <li><a href="brands.html"
+                                class="text-red-100 hover:text-white transition-colors flex items-center group"><i
+                                    data-lucide="chevron-right"
+                                    class="h-4 w-4 mr-2 group-hover:translate-x-1 transition-transform"></i>Browse
+                                Brands</a></li>
+                        <li><a href="cars.html"
+                                class="text-red-100 hover:text-white transition-colors flex items-center group"><i
+                                    data-lucide="chevron-right"
+                                    class="h-4 w-4 mr-2 group-hover:translate-x-1 transition-transform"></i>All Cars</a>
+                        </li>
+                        <li><a href="compare.html"
+                                class="text-red-100 hover:text-white transition-colors flex items-center group"><i
+                                    data-lucide="chevron-right"
+                                    class="h-4 w-4 mr-2 group-hover:translate-x-1 transition-transform"></i>Compare
+                                Cars</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-lg font-semibold mb-6 uppercase tracking-wider">Information</h3>
+                    <ul class="space-y-4">
+                        <li><a href="about.html"
+                                class="text-red-100 hover:text-white transition-colors flex items-center group"><i
+                                    data-lucide="chevron-right"
+                                    class="h-4 w-4 mr-2 group-hover:translate-x-1 transition-transform"></i>About
+                                Platform</a></li>
+                        <li><a href="contact.html"
+                                class="text-red-100 hover:text-white transition-colors flex items-center group"><i
+                                    data-lucide="chevron-right"
+                                    class="h-4 w-4 mr-2 group-hover:translate-x-1 transition-transform"></i>Contact
+                                Us</a></li>
+                    </ul>
+                </div>
+
+            </div>
+            <div class="border-t border-red-500/50 mb-8"></div>
+            <div class="flex flex-col md:flex-row justify-between items-center text-red-200 text-sm gap-4">
+                <p>&copy; 2026 car.livechennai.com - All rights reserved.</p>
+                <p>Designed, developed and maintained by JB Soft System</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/carsData.js"></script>
+    <script src="js/dataAugment.js"></script>
+    <script>
+        lucide.createIcons();
+        const btn = document.getElementById('mobile-menu-btn');
+        const menu = document.getElementById('mobile-menu');
+        if (btn && menu) {
+            btn.addEventListener('click', () => {
+                menu.classList.toggle('hidden');
+            });
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const urlParams = new URLSearchParams(window.location.search);
+            const carId = parseInt(urlParams.get('id'));
+
+            const car = carsData.find(c => c.id === carId);
+
+            if (car) {
+                document.title = `${car.brand} ${car.model} (${car.year}) - car.livechennai.com`;
+
+                const container = document.getElementById('car-details-container');
+                container.innerHTML = `
                 <!-- Breadcrumbs -->
                 <nav class="flex mb-8 text-sm font-medium text-gray-500 items-center overflow-x-auto whitespace-nowrap pb-2">
                     <a href="index.html" class="hover:text-primary transition-colors flex items-center">Home</a>
@@ -173,9 +223,29 @@
                                 <div class="flex items-center justify-between mb-2">
                                     <h1 class="text-3xl sm:text-4xl font-extrabold text-gray-900">${car.brand} ${car.model}</h1>
                                 </div>
-                                <p class="text-gray-500 text-lg mb-6">${car.year} Model • ${car.variant}</p>
+                                <p class="text-gray-500 text-lg mb-4">${car.year} Model • ${car.variant}</p>
                                 
-
+                                <div class="bg-gray-50 p-4 rounded-xl border border-gray-100 mb-6 flex flex-col sm:flex-row gap-6">
+                                    <div>
+                                        <p class="text-xs text-gray-500 uppercase font-semibold tracking-wider mb-1">Rate (Ex-Showroom)</p>
+                                        <p class="text-3xl font-extrabold text-primary">${car.formatted_price}</p>
+                                    </div>
+                                    <div class="hidden sm:block w-px bg-gray-200"></div>
+                                    <div>
+                                        <p class="text-xs text-gray-500 uppercase font-semibold tracking-wider mb-1">Est. On-Road Price</p>
+                                        <p class="text-2xl font-bold text-gray-700">${(function (p) {
+                        if (!p) return "N/A";
+                        let m = p.match(/([\d.]+)/);
+                        if (m) {
+                            let v = parseFloat(m[1]);
+                            let o = (v * 1.15).toFixed(2);
+                            return p.replace(m[1], o) + "*";
+                        }
+                        return "N/A";
+                    })(car.formatted_price)
+                    }</p>
+                                    </div>
+                                </div>
 
                                 <div class="grid grid-cols-2 gap-y-6 gap-x-4 mb-8 border-t border-b border-gray-100 py-6">
                                     <div>
@@ -205,94 +275,209 @@
                                 </div>
                             </div>
                             
-                            <div class="flex gap-4">
-                                <button onclick="addToCompare(${car.id})" id="compare-btn-${car.id}" class="flex-1 bg-gray-100 text-gray-700 py-4 rounded-lg font-bold hover:bg-gray-200 transition shadow-sm flex justify-center items-center gap-2 group">
-                                    <i data-lucide="git-compare" class="group-hover:text-primary transition-colors"></i> Add to Compare
+                                <button onclick="window.toggleCompare(${car.id})" data-id="${car.id}" data-base-class="flex-1 py-4 rounded-lg font-bold w-full transition shadow-sm" data-add-text="Add to Compare" data-remove-text="Remove from Compare" class="compare-toggle-btn">
                                 </button>
-                                
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Sticky Sub-Nav -->
+                <div class="sticky top-20 bg-gray-50/90 backdrop-blur border-b border-gray-200 z-30 mb-8 pt-4">
+                    <div class="flex overflow-x-auto hide-scrollbar space-x-8 px-2">
+                        <a href="#" class="pb-3 text-primary font-bold border-b-2 border-primary whitespace-nowrap">Overview</a>
+                        <a href="#specs" class="pb-3 text-gray-500 hover:text-gray-900 font-semibold whitespace-nowrap">Specs & Features</a>
+                        <a href="#colors" class="pb-3 text-gray-500 hover:text-gray-900 font-semibold whitespace-nowrap">Colors</a>
+                        <a href="#similar" class="pb-3 text-gray-500 hover:text-gray-900 font-semibold whitespace-nowrap">Similar Cars</a>
+                    </div>
+                </div>
+
+                <!-- Specs & Features Section -->
+                <div id="specs" class="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-12 scroll-mt-32">
+                    <div class="lg:col-span-2 space-y-8">
+                        <!-- Pros & Cons -->
+                        <div class="bg-white p-6 rounded-2xl shadow-sm border border-gray-100">
+                            <h2 class="text-2xl font-bold mb-6">Things We Like & Dislike</h2>
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                <div class="bg-green-50 border border-green-100 p-5 rounded-xl">
+                                    <h3 class="flex items-center text-green-800 font-bold mb-4"><i data-lucide="thumbs-up" class="w-5 h-5 mr-2"></i> Pros</h3>
+                                    <ul class="space-y-3">
+                                        ${car.pros.map(p => `<li class="flex items-start text-sm text-gray-700"><i data-lucide="check-circle-2" class="w-4 h-4 text-green-500 mr-2 mt-0.5 flex-shrink-0"></i>${p}</li>`).join('')}
+                                    </ul>
+                                </div>
+                                <div class="bg-red-50 border border-red-100 p-5 rounded-xl">
+                                    <h3 class="flex items-center text-red-800 font-bold mb-4"><i data-lucide="thumbs-down" class="w-5 h-5 mr-2"></i> Cons</h3>
+                                    <ul class="space-y-3">
+                                        ${car.cons.map(c => `<li class="flex items-start text-sm text-gray-700"><i data-lucide="x-circle" class="w-4 h-4 text-red-500 mr-2 mt-0.5 flex-shrink-0"></i>${c}</li>`).join('')}
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Key Specs -->
+                        <div class="bg-white p-6 rounded-2xl shadow-sm border border-gray-100">
+                            <h2 class="text-2xl font-bold mb-6">Key Specifications</h2>
+                            <div class="grid grid-cols-2 sm:grid-cols-3 gap-6">
+                                <div>
+                                    <p class="text-gray-500 text-sm mb-1">Engine</p>
+                                    <p class="font-bold text-gray-900">${car.engine}</p>
+                                </div>
+                                <div>
+                                    <p class="text-gray-500 text-sm mb-1">Power</p>
+                                    <p class="font-bold text-gray-900">${car.specs.power}</p>
+                                </div>
+                                <div>
+                                    <p class="text-gray-500 text-sm mb-1">Torque</p>
+                                    <p class="font-bold text-gray-900">${car.specs.torque}</p>
+                                </div>
+                                <div>
+                                    <p class="text-gray-500 text-sm mb-1">Mileage</p>
+                                    <p class="font-bold text-gray-900">${car.mileage}</p>
+                                </div>
+                                <div>
+                                    <p class="text-gray-500 text-sm mb-1">Boot Space</p>
+                                    <p class="font-bold text-gray-900">${car.specs.boot_space}</p>
+                                </div>
+                                <div>
+                                    <p class="text-gray-500 text-sm mb-1">Ground Clearance</p>
+                                    <p class="font-bold text-gray-900">${car.specs.ground_clearance}</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Features -->
+                        <div class="bg-white p-6 rounded-2xl shadow-sm border border-gray-100">
+                            <h2 class="text-2xl font-bold mb-6">Key Features</h2>
+                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                                ${car.features.map(f => `<div class="flex items-center text-gray-700"><i data-lucide="check" class="w-4 h-4 text-primary mr-3 flex-shrink-0"></i>${f}</div>`).join('')}
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="space-y-8">
+                        <!-- Safety -->
+                        <div class="bg-white p-6 rounded-2xl shadow-sm border border-gray-100">
+                            <h2 class="text-xl font-bold mb-4">Safety</h2>
+                            <div class="flex items-center gap-3 mb-6 bg-gray-50 p-3 rounded-lg border border-gray-200">
+                                <i data-lucide="shield-check" class="w-8 h-8 text-green-600"></i>
+                                <div>
+                                    <p class="text-sm text-gray-500 font-semibold uppercase tracking-wider">NCAP Rating</p>
+                                    <p class="font-bold text-gray-900">${car.safety.rating}</p>
+                                </div>
+                            </div>
+                            <div class="space-y-3">
+                                <div class="flex items-center justify-between text-sm border-b border-gray-100 pb-2">
+                                    <span class="text-gray-600">Airbags</span>
+                                    <span class="font-bold text-gray-900">${car.safety.airbags} Airbags</span>
+                                </div>
+                                ${car.safety.features.map(f => `
+                                <div class="flex items-center justify-between text-sm border-b border-gray-100 pb-2">
+                                    <span class="text-gray-600">${f.split(' (')[0]}</span>
+                                    <i data-lucide="check" class="w-4 h-4 text-green-500"></i>
+                                </div>
+                                `).join('')}
+                            </div>
+                        </div>
+                        
+                        <!-- EMI Widget -->
+                        <div class="bg-white p-6 rounded-2xl shadow-sm border border-gray-100">
+                            <h2 class="text-xl font-bold mb-4">EMI Estimation</h2>
+                            <p class="text-gray-500 text-sm mb-4">Calculate your monthly car loan payment.</p>
+                            <div class="bg-gray-50 p-4 rounded-xl border border-gray-200 text-center">
+                                <p class="text-sm text-gray-500 mb-1">Estimated EMI</p>
+                                <p class="text-3xl font-extrabold text-primary mb-2">${car.emi}</p>
+                                <p class="text-xs text-gray-400">For 60 months @ 9.8% interest</p>
                             </div>
                         </div>
                     </div>
                 </div>
-            `;
-            
-            window.currentGalleryImages = car.images;
-            window.currentGalleryIdx = 0;
 
-            window.setGalleryImage = function(idx) {
-                window.currentGalleryIdx = idx;
-                document.getElementById('main-gallery-img').src = window.currentGalleryImages[idx];
+                <!-- Colors Section -->
+                <div id="colors" class="bg-white p-6 md:p-10 rounded-2xl shadow-sm border border-gray-100 mb-12 scroll-mt-32">
+                    <h2 class="text-2xl font-bold mb-2">Available Colors</h2>
+                    <p class="text-gray-500 mb-8">${car.brand} ${car.model} is available in ${car.colors.length} colors.</p>
+                    <div class="flex flex-wrap gap-6">
+                        ${car.colors.map((c, i) => `
+                        <div class="flex flex-col items-center gap-2 group cursor-pointer">
+                            <div class="w-16 h-16 rounded-full shadow-inner border-2 ${i === 0 ? 'border-primary ring-2 ring-primary ring-offset-2' : 'border-gray-200'} transition-all group-hover:scale-110" style="background-color: ${c.hex};" title="${c.name}"></div>
+                            <span class="text-xs font-semibold text-gray-600 text-center max-w-[80px]">${c.name}</span>
+                        </div>
+                        `).join('')}
+                    </div>
+                </div>
+
                 
-                const thumbs = document.getElementById('gallery-thumbnails').children;
-                for(let i=0; i<thumbs.length; i++) {
-                    thumbs[i].classList.remove('border-primary');
-                    thumbs[i].classList.add('border-transparent');
-                    if(i === idx) {
-                        thumbs[i].classList.add('border-primary');
-                        thumbs[i].classList.remove('border-transparent');
+                <!-- Similar Cars Section -->
+                <div id="similar" class="mb-12 scroll-mt-32">
+                    <h2 class="text-2xl font-bold mb-6">Similar ${car.body_type}s</h2>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6" id="similar-cars-container">
+                        <!-- Filled by JS -->
+                    </div>
+                </div>
+            `;
+
+                window.currentGalleryImages = car.images;
+                window.currentGalleryIdx = 0;
+
+                window.setGalleryImage = function (idx) {
+                    window.currentGalleryIdx = idx;
+                    document.getElementById('main-gallery-img').src = window.currentGalleryImages[idx];
+
+                    const thumbs = document.getElementById('gallery-thumbnails').children;
+                    for (let i = 0; i < thumbs.length; i++) {
+                        thumbs[i].classList.remove('border-primary');
+                        thumbs[i].classList.add('border-transparent');
+                        if (i === idx) {
+                            thumbs[i].classList.add('border-primary');
+                            thumbs[i].classList.remove('border-transparent');
+                        }
+                    }
+                };
+
+                window.galleryNext = function () {
+                    let nextIdx = window.currentGalleryIdx + 1;
+                    if (nextIdx >= window.currentGalleryImages.length) nextIdx = 0;
+                    window.setGalleryImage(nextIdx);
+                };
+
+                window.galleryPrev = function () {
+                    let prevIdx = window.currentGalleryIdx - 1;
+                    if (prevIdx < 0) prevIdx = window.currentGalleryImages.length - 1;
+                    window.setGalleryImage(prevIdx);
+                };
+
+                // Populate Similar Cars
+                const similarCars = carsData.filter(c => c.body_type === car.body_type && c.id !== car.id).slice(0, 4);
+                const similarContainer = document.getElementById('similar-cars-container');
+                if (similarContainer) {
+                    if (similarCars.length > 0) {
+                        similarContainer.innerHTML = similarCars.map(c => `
+                        <a href="details.html?id=${c.id}" class="bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden hover:shadow-md transition block group flex flex-col h-full">
+                            <div class="h-40 overflow-hidden bg-gray-100 relative shrink-0">
+                                <img src="${c.images[0]}" class="w-full h-full object-cover group-hover:scale-110 transition duration-500" onerror="this.onerror=null; this.src='assets/images/car-placeholder.jpg';">
+                            </div>
+                            <div class="p-4 flex-1 flex flex-col justify-between">
+                                <div>
+                                    <h3 class="font-bold text-gray-900 group-hover:text-primary transition">${c.brand} ${c.model}</h3>
+                                    <p class="text-xs text-gray-500 mt-1">${c.year} • ${c.variant}</p>
+                                </div>
+                                <p class="text-primary font-bold mt-3">${c.formatted_price}</p>
+                            </div>
+                        </a>
+                    `).join('');
+                    } else {
+                        document.getElementById('similar').style.display = 'none';
                     }
                 }
-            };
 
-            window.galleryNext = function() {
-                let nextIdx = window.currentGalleryIdx + 1;
-                if(nextIdx >= window.currentGalleryImages.length) nextIdx = 0;
-                window.setGalleryImage(nextIdx);
-            };
-
-            window.galleryPrev = function() {
-                let prevIdx = window.currentGalleryIdx - 1;
-                if(prevIdx < 0) prevIdx = window.currentGalleryImages.length - 1;
-                window.setGalleryImage(prevIdx);
-            };
-
-            lucide.createIcons();
-            checkCompareStatus(car.id);
-        } else {
-            document.getElementById('error-state').classList.remove('hidden');
-        }
-    });
-
-    // Compare Logic
-    function getCompareList() {
-        return JSON.parse(localStorage.getItem('compareList') || '[]');
-    }
-
-    function checkCompareStatus(id) {
-        const list = getCompareList();
-        const btn = document.getElementById(`compare-btn-${id}`);
-        if(btn) {
-            if(list.includes(id)) {
-                btn.classList.add('bg-primary', 'text-white');
-                btn.classList.remove('bg-gray-100', 'text-gray-700');
-                btn.querySelector('i').classList.add('text-white');
-                btn.querySelector('i').classList.remove('group-hover:text-primary');
+                lucide.createIcons();
+                window.updateAllCompareButtons();
             } else {
-                btn.classList.remove('bg-primary', 'text-white');
-                btn.classList.add('bg-gray-100', 'text-gray-700');
-                btn.querySelector('i').classList.remove('text-white');
-                btn.querySelector('i').classList.add('group-hover:text-primary');
+                document.getElementById('error-state').classList.remove('hidden');
             }
-        }
-    }
+        });
 
-    function addToCompare(id) {
-        let list = getCompareList();
-        if(list.includes(id)) {
-            list = list.filter(i => i !== id);
-            alert("Removed from comparison list.");
-        } else {
-            if(list.length >= 3) {
-                alert("You can only compare up to 3 cars. Please remove one first.");
-                return;
-            }
-            list.push(id);
-            alert("Added to comparison list!");
-        }
-        localStorage.setItem('compareList', JSON.stringify(list));
-        checkCompareStatus(id);
-    }
-</script>
+    </script>
 
 </body>
+
 </html>
